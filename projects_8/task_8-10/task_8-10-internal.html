@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Internal-стили</title>
+    <style>
+        h1 {
+            color: #2c3e50;
+            font-size: 32px;
+            text-align: center;
+            background: #ecf0f1;
+            padding: 15px;
+        }
+        p {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 12px;
+            margin: 15px 0;
+        }
+        /* Первый абзац */
+        p:first-of-type {
+            color: #1e466e;
+            font-size: 18px;
+            background: #eaf2f8;
+            border-left: 5px solid #3498db;
+        }
+        /* Второй абзац */
+        p:nth-of-type(2) {
+            color: #0b3b2f;
+            font-size: 16px;
+            background: #e0f2e9;
+            border-radius: 8px;
+            text-align: justify;
+        }
+        /* Третий абзац */
+        p:nth-of-type(3) {
+            color: #4a0e4e;
+            font-size: 20px;
+            background: #f4e1f9;
+            margin: 20px 0;
+            border: 2px solid #9b59b6;
+        }
+        ul {
+            background: #fff3e0;
+            padding: 20px 20px 20px 40px;
+            border: 1px solid #f39c12;
+            list-style-type: square;
+        }
+        li {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        li:first-child {
+            color: #c0392b;
+            font-weight: bold;
+        }
+        li:nth-child(2) {
+            color: #16a085;
+            text-decoration: underline;
+        }
+        li:last-child {
+            color: #2980b9;
+            background: #d6eaf8;
+        }
+        /* Новое правило для ссылки при наведении */
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Добро пожаловать!</h1>
+
+    <p>Это первый абзац с internal-стилями (цвет, фон, левая рамка).</p>
+    <p>Второй абзац — зелёный фон, скруглённые углы.</p>
+    <p>Третий абзац — фиолетовый с рамкой.</p>
+
+    <ul>
+        <li>Элемент списка 1</li>
+        <li>Элемент списка 2</li>
+        <li>Элемент списка 3</li>
+    </ul>
+
+    <!-- Проверка hover на ссылке -->
+    <p><a href="#">Наведите на меня — стану красной</a></p>
+</body>
+</html>
