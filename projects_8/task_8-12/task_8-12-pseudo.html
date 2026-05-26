@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Псевдоклассы и селекторы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 1. Псевдокласс :first-child — первый пункт списка */
+        li:first-child {
+            font-weight: bold;
+            color: #2e7d32;
+            background: #e8f5e9;
+            padding: 4px;
+        }
+
+        /* 2. :last-child — последний пункт списка */
+        li:last-child {
+            font-weight: bold;
+            color: #c62828;
+            background: #ffebee;
+            padding: 4px;
+        }
+
+        /* 3. :nth-child(even) — чётные строки таблицы */
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+
+        /* 4. :hover — реакция ссылок при наведении */
+        a:hover {
+            color: #d32f2f;
+            text-decoration: underline;
+        }
+
+        /* 5. :focus — подсветка полей ввода при фокусе */
+        input:focus {
+            outline: none;
+            border: 2px solid #4caf50;
+            background: #fffde7;
+        }
+
+        /* 6. :required — выделяем обязательные поля */
+        input:required {
+            border-left: 4px solid #ff9800;
+            background: #fff3e0;
+        }
+
+        /* Бонус: :nth-child(3n) — каждый третий пункт списка */
+        li:nth-child(3n) {
+            background-color: #e0eaff;
+        }
+
+        /* 7. Селектор по атрибуту — ссылки на PDF */
+        a[href$=".pdf"] {
+            color: #c44e52;
+            font-weight: bold;
+        }
+
+        /* 8. :not() — линия-разделитель для всех li, кроме первого */
+        li:not(:first-child) {
+            border-top: 1px solid #ddd;
+            margin-top: 6px;
+            padding-top: 6px;
+        }
+
+        /* Дополнительные стили для таблицы и списка */
+        ol, table {
+            margin-bottom: 30px;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background: #e9ecef;
+        }
+        input, button {
+            display: block;
+            margin: 10px 0;
+            padding: 8px;
+            width: 250px;
+        }
+        button {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #388e3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Практика с псевдоклассами</h1>
+
+    <h2>Нумерованный список (6+ элементов)</h2>
+    <ol>
+        <li>Первый пункт (выделен :first-child)</li>
+        <li>Второй пункт</li>
+        <li>Третий пункт (каждый третий имеет фон)</li>
+        <li>Четвёртый пункт</li>
+        <li>Пятый пункт</li>
+        <li>Шестой пункт (последний выделен :last-child)</li>
+    </ol>
+
+    <h2>Таблица (5+ строк)</h2>
+    <table>
+        <thead>
+            <tr><th>Имя</th><th>Город</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Анна</td><td>Москва</td></tr>
+            <tr><td>Борис</td><td>СПб</td></tr>
+            <tr><td>Виктор</td><td>Казань</td></tr>
+            <tr><td>Галина</td><td>Новосибирск</td></tr>
+            <tr><td>Дмитрий</td><td>Екатеринбург</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Ссылки разных типов</h2>
+    <ul>
+        <li><a href="about.html">Внутренняя ссылка (about.html)</a></li>
+        <li><a href="https://stepik.org">Внешняя ссылка (Stepik)</a></li>
+        <li><a href="document.pdf">Ссылка на PDF-файл</a> — красная, жирная</li>
+    </ul>
+
+    <h2>Форма с полями</h2>
+    <form>
+        <input type="text" placeholder="Обычное поле (без required)">
+        <input type="email" required placeholder="Email (обязательное поле)">
+        <button type="submit">Отправить</button>
+    </form>
+    <p><em>Примечание:</em> обязательное поле подсвечено слева оранжевой полосой. При фокусе — зелёная рамка.</p>
+</body>
+</html>
