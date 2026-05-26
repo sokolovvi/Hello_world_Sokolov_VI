@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Карточка товара</title>
+    <style>
+        /* ════════ Базовые стили страницы ════════ */
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif; /* несколько шрифтов через запятую */
+            background: #eef2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Правило с несколькими селекторами через запятую — общие стили для заголовков */
+        h1, h2, h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        /* Стили для карточки (один селектор по классу) */
+        .card {
+            max-width: 320px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 20px 24px 24px 24px;   /* шорткат padding (4 значения: верх, право, низ, лево) */
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Правило с двумя классами на одном элементе (.card.product) — можно расширить */
+        .card.product {
+            border: 1px solid #e0e0e0;      /* шорткат border */
+        }
+
+        /* Описание товара */
+        .description {
+            color: #5a6c7e;
+            line-height: 1.5;               /* число без единицы */
+            margin-bottom: 16px;
+        }
+
+        /* Цена */
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2e7d32;
+            margin: 12px 0;
+        }
+
+        /* Кнопка — общий класс */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        /* Кнопка-вариант primary — комбинация двух классов */
+        .btn.btn-primary {
+            background: #4caf50;
+            color: white;
+        }
+        .btn.btn-primary:hover {
+            background: #388e3c;
+        }
+
+        /* Многострочный комментарий:
+           Здесь закончились стили карточки товара.
+        */
+    </style>
+</head>
+<body>
+    <div class="card product">
+        <h2>Беспроводные наушники SoundPro X</h2>
+        <p class="description">Высокое качество звука, активное шумоподавление, 30 часов работы без подзарядки.</p>
+        <p class="price">7 990 ₽</p>
+        <button class="btn btn-primary">Купить</button>
+    </div>
+</body>
+</html>

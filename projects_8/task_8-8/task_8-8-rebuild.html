@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Страница-визитка с семантической вёрсткой — Иван Иванов, студент-разработчик">
+  <meta name="author" content="Иван Иванов">
+
+  <title>Визитка | Иван Иванов</title>
+
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Небольшие стили для наглядности (можно вынести в styles.css) */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f5f7fa;
+      line-height: 1.5;
+    }
+    header, nav, main, aside, footer {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #1a73e8;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    address {
+      font-style: normal;
+      background: #eef2f3;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    footer {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ШАПКА САЙТА (header) -->
+  <header>
+    <div class="logo">👨‍💻 Владислав Соколов</div>
+    <p>Студент-разработчик, увлекаюсь веб-технологиями и Python</p>
+  </header>
+
+  <!-- НАВИГАЦИЯ (nav) -->
+  <nav aria-label="Основное меню">
+    <ul>
+      <li><a href="#about">Обо мне</a></li>
+      <li><a href="#skills">Навыки</a></li>
+      <li><a href="#projects">Проекты</a></li>
+      <li><a href="#contact">Контакты</a></li>
+    </ul>
+  </nav>
+
+  <!-- ОСНОВНОЙ КОНТЕНТ (main) -->
+  <main>
+    <section id="about">
+      <h2>Обо мне</h2>
+      <p>Меня зовут Владислав, я студент 1-го курса Института Биомедицинских систем и биотехнологий. Начинал с HTML и CSS, сейчас активно изучаю Python и базы данных. Хочу стать разработчиком.</p>
+    </section>
+
+    <section id="skills">
+      <h2>Навыки</h2>
+      <ul>
+        <li>HTML5, CSS3 (средний уровень)</li>
+        <li>JavaScript (базовый)</li>
+        <li>Python (Django, Flask — начальный)</li>
+        <li>Работа с Git, GitHub</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Проекты</h2>
+      <article>
+        <h3>Сайт-визитка (этот)</h3>
+        <p>Семантическая вёрстка, адаптив, доступность.</p>
+      </article>
+      <article>
+        <h3>Телеграм-бот на Python</h3>
+        <p>Бот для учёта расходов, взаимодействие с Google Sheets.</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- БОКОВАЯ ПАНЕЛЬ (aside) — дополнительная информация -->
+  <aside>
+    <h3>📌 Интересный факт</h3>
+    <p>Я прочитал книгу «Совершенный код» и с тех пор пишу чистые, комментированные скрипты. А ещё обучаюсь у высокооквалифицированного преподавателя информатики.</p>
+  </aside>
+
+  <!-- ПОДВАЛ (footer) с копирайтом и address -->
+  <footer>
+    <address id="contact">
+      <strong>Контакты:</strong><br>
+      ✉️ <a href="mailto:vladgoalkeeper@yandex.ru">vladgoalkeeper@yandex.ru</a><br>
+      📞 <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+    </address>
+    <p>© 2026 Владислав Соколов. Все права защищены.</p>
+    <p><small>Семантическая страница, задание 8-8</small></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
