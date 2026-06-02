@@ -1,41 +1,103 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Анализ студенческой БД</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Анализ цен</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f0f0f0; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; }
+        h1 { color: #2A9D8F; }
+        button { margin: 5px; padding: 10px 15px; background: #2A9D8F; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #1e6e63; }
+        .result { margin-top: 20px; padding: 20px; border: 1px solid #ddd; min-height: 400px; background: #fafafa; }
+        .stat { font-size: 36px; font-weight: bold; color: #2A9D8F; text-align: center; padding: 40px; }
+        img { max-width: 100%; }
+        .error { color: red; text-align: center; padding: 40px; }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>📈 Анализ успеваемости</h1>
-        <p>Интерактивный дашборд для базы student_task</p>
-    </header>
+    <div class="container">
+        <h1>📊 Анализ цен на товары</h1>
 
-    <div class="layout">
-        <aside class="controls">
-            <h2>Статистика</h2>
-            <button class="action-btn" data-action="stat" data-metric="mean">📊 Средний балл</button>
-            <button class="action-btn" data-action="stat" data-metric="median">📈 Медиана</button>
-            <button class="action-btn" data-action="stat" data-metric="total">🔢 Количество оценок</button>
-            <button class="action-btn" data-action="stat" data-metric="min">⬇️ Минимум</button>
-            <button class="action-btn" data-action="stat" data-metric="max">⬆️ Максимум</button>
+        <div>
+            <button onclick="getMean()">Средняя цена</button>
+            <button onclick="getMedian()">Медиана</button>
+            <button onclick="getTotal()">Количество</button>
+            <button onclick="getMin()">Минимум</button>
+            <button onclick="getMax()">Максимум</button>
+            <button onclick="getStd()">Ст.отклонение</button>
+            <button onclick="showHistogram()">Гистограмма</button>
+            <button onclick="showCategories()">По категориям</button>
+            <button onclick="showBoxplot()">Боксплот</button>
+            <button onclick="clearResult()">Очистить</button>
+        </div>
 
-            <h2>Графики</h2>
-            <button class="action-btn" data-action="chart" data-kind="histogram">📊 Распределение оценок</button>
-            <button class="action-btn" data-action="chart" data-kind="courses">🏫 Средний балл по курсам</button>
-
-            <button class="action-btn clear" id="clear-btn">🗑 Очистить</button>
-        </aside>
-
-        <main id="result-area">
-            <p class="placeholder">← Нажмите кнопку, чтобы увидеть результат</p>
-        </main>
+        <div id="result" class="result">
+            <div style="text-align: center; color: #999;">← Нажмите на кнопку</div>
+        </div>
     </div>
 
-    <footer>
-        <p>© 2026 Ваше Имя · Учебный проект</p>
-    </footer>
+    <script>
+        async function getMean() {
+            await fetchStat('mean', 'Средняя цена');
+        }
+        async function getMedian() {
+            await fetchStat('median', 'Медиана');
+        }
+        async function getTotal() {
+            await fetchStat('total', 'Количество записей');
+        }
+        async function getMin() {
+            await fetchStat('min', 'Минимум');
+        }
+        async function getMax() {
+            await fetchStat('max', 'Максимум');
+        }
+        async function getStd() {
+            await fetchStat('std', 'Стандартное отклонение');
+        }
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+        async function fetchStat(metric, label) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<div style="text-align: center;">⏳ Загрузка...</div>';
+
+            try {
+                const response = await fetch(`/api/value/${metric}`);
+                const data = await response.json();
+                resultDiv.innerHTML = `<div class="stat">${label}<br>${data.value} ₽</div>`;
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">❌ Ошибка: ${error.message}</div>`;
+            }
+        }
+
+        async function showHistogram() {
+            await showChart('histogram');
+        }
+
+        async function showCategories() {
+            await showChart('categories');
+        }
+
+        async function showBoxplot() {
+            await showChart('boxplot');
+        }
+
+        async function showChart(type) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<div style="text-align: center;">⏳ Загрузка графика...</div>';
+
+            try {
+                const response = await fetch(`/api/chart/${type}`);
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+                resultDiv.innerHTML = `<img src="${url}" alt="График">`;
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">❌ Ошибка: ${error.message}</div>`;
+            }
+        }
+
+        function clearResult() {
+            document.getElementById('result').innerHTML = '<div style="text-align: center; color: #999;">← Нажмите на кнопку</div>';
+        }
+    </script>
 </body>
 </html>
